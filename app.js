@@ -28,6 +28,13 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// TODO: реализовать все роуты, которые нужны для прохождения тестов из test.js
+// Тест можно запустить командой `./node_modules/.bin/nodeunit test.js`
+
+// TODO: хранение пользователей организовать в памяти, без внешней базы данных
+
+// TODO: структурировать и изолировать код обрабатывающий запросы к /users
+
 app.get('/', routes.index);
 app.get('/users', user.list);
 
