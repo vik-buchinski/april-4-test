@@ -17,3 +17,12 @@ exports.destroyList = function (req, res) {
   users = [];
   res.json(users);
 };
+
+exports.update = function (req, res) {
+  var id = req.params.id;
+  var user = users[id - 1];
+
+  user.name = req.body.name;
+
+  res.json(user);
+};

@@ -70,6 +70,18 @@ exports.testResponseOnPostUsers = function (test) {
   });
 };
 
+exports.testUpdateOnUser = function (test) {
+  var options = { url: usersUri + '/2', json: { name: 'Second Updated'} };
+
+  test.expect(2);
+
+  request.put(options, function (error, response, body) {
+    test.equal(body.id, 2);
+    test.equal(body.name, options.json.name);
+    test.done();
+  });
+};
+
 exports.testSequenceOnGetUsers = function (test) {
   test.expect(4);
 
@@ -78,7 +90,7 @@ exports.testSequenceOnGetUsers = function (test) {
       'Ответ должен содержать всех трёх пользователей добавленных до сих пор');
 
     test.equal(body[0].name, 'First', 'Сперва должен быть First');
-    test.equal(body[1].name, 'Second', 'Вторым должен быть Second');
+    test.equal(body[1].name, 'Second Updated', 'Вторым должен быть Second');
     test.equal(body[2].name, 'John', 'Третьим идёт John');
 
     test.done();

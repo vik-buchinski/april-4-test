@@ -38,6 +38,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.post('/users', user.create);
+app.put('/users/:id', user.update);
 app.del('/users', user.destroyList);
 
 http.createServer(app).listen(app.get('port'), function(){
