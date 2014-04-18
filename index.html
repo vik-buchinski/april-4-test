@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" />
+    <script type="text/javascript" src="libs/Underscore.js"></script>
+    <script type="text/javascript" src="libs/Jquery.js"></script>
+    <script type="text/javascript" src="libs/jquery.mobile-1.4.2.js"></script>
+</head>
+<body>
+    <div data-role="page" id="home-page">
+        <div data-role="header" data-position="fixed">
+            <h1>Camera</h1>
+        </div>
+        <div data-role="content">
+            <!-- Dynamic content-->
+        </div>
+
+        <script type="text/html" id='table-data'>
+            <table>
+                <tbody>
+                    <tr>
+                        <% _.each(students, function(student) { %>
+                        <td><%=student.name%>
+                        </td>
+                        <% if(student.disciplinsList) { %>
+                        <% _.each(student.disciplinsList, function(disciplina) { %>
+                        <td>
+                            <%=disciplina.name%><br />
+                            <select id="<%=disciplina.id%>">
+                                <% _.each(student.disciplinsList, function(disciplina) { %>
+                                    <option <% if(disciplina.isSelected) { %> selected <% } %> value="<%=disciplina.value%>"><%=disciplina.value%></option>
+                                <% }); %>
+                            </select>
+                        </td>
+                        <% }); %>
+                        <% } %>
+                        <% }); %>
+                    </tr>
+                </tbody>
+            </table>
+        </script>
+    </div>
+</body>
+</html>
